@@ -10,55 +10,61 @@
     {
       "day": "Du lundi au vendredi",
       "time": "19h00",
-      "description": "Messe quotidienne célébrée par la communauté des frères"
+      "description": "Messe quotidienne précédée des Vêpres à 18h30"
     },
     {
-      "day": "Dimanche et fêtes",
-      "time": "10h00",
-      "description": "Messe dominicale de la communauté"
+      "day": "Samedi",
+      "time": "12h00",
+      "description": "Messe du samedi midi"
     },
     {
-      "day": "Dimanche soir",
-      "time": "19h00",
-      "description": "Messe du soir (précédée des Vêpres à 18h30)"
+      "day": "Dimanche et solennités",
+      "time": "10h00 & 19h00",
+      "description": "Messe du matin (10h00) et messe du soir (19h00, précédée des Vêpres à 18h30)"
     }
   ],
   "confessions": {
-    "period": "D'octobre à juin",
+    "period": "Toute l'année (permanences assurées par les frères)",
     "slots": [
       {
-        "days": "Mardi au vendredi",
-        "time": "17h00 - 18h45",
-        "description": "Permanence d'un prêtre disponible pour le sacrement de réconciliation"
+        "days": "Du mardi au samedi",
+        "time": "15h00 - 18h00",
+        "description": "Permanence d'un frère prêtre pour l'écoute spirituelle et le sacrement de réconciliation"
       },
       {
-        "days": "Samedi",
-        "time": "10h00 - 12h00 & 16h30 - 18h45",
-        "description": "Confessions et écoute spirituelle"
+        "days": "Vendredi et samedi matin",
+        "time": "10h00 - 12h00",
+        "description": "Confessions matinales à la chapelle"
+      },
+      {
+        "days": "Après la messe du soir",
+        "time": "19h30 - 20h00",
+        "description": "Possibilité de se confesser après l'Eucharistie de 19h00"
       }
     ]
   },
   "adoration": [
     {
-      "day": "Vendredi",
-      "time": "8h30 - 20h30",
-      "description": "Adoration continue du Saint Sacrement toute la journée (de septembre à fin juin)"
+      "day": "Tous les vendredis",
+      "time": "15h00 - 18h30 & 19h30 - 20h30",
+      "description": "Adoration eucharistique continue (y compris durant les vacances)"
     },
     {
       "day": "Mardi",
       "time": "20h00 - 21h00",
-      "description": "Soirée d'adoration animée par la Scola Capucinorum (hors vacances scolaires)"
+      "description": "Soirée d'adoration et chants médités animée par la Scola Capucinorum (hors vacances scolaires)"
     },
     {
       "day": "Dimanche",
       "time": "18h30 - 19h30",
-      "description": "Vêpres, exposition du Saint Sacrement et Salut à 19h30"
+      "description": "Vêpres chantées et exposition du Saint Sacrement"
     }
   ],
   "contact": {
     "name": "Frères Mineurs Capucins de Clermont-Ferrand",
     "address": "9 Boulevard Lafayette, 63000 Clermont-Ferrand",
-    "phone": "04 73 92 66 38",
+    "phone": "04 73 42 49 38",
+    "phone_alt": "04 73 92 66 38",
     "email": "capucins.clermont@gmail.com",
     "google_maps_url": "https://maps.google.com/?q=9+Boulevard+Lafayette+63000+Clermont-Ferrand"
   }

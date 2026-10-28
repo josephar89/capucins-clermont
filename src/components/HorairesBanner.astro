@@ -27,15 +27,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-      <!-- Card 1: Messes Semaine -->
+      <!-- Card 1: Messes Semaine & Samedi -->
       <div class="bg-black/25 backdrop-blur-sm p-5 rounded-2xl border border-amber-900/40 hover:border-amber-600/50 transition">
         <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h3 class="font-semibold text-base text-amber-100">Messe Quotidienne</h3>
-        <p class="text-xs text-stone-300 mt-1">Du lundi au vendredi</p>
+        <p class="text-xs text-stone-300 mt-1">Lundi au vendredi (Vêpres 18h30)</p>
         <p class="text-2xl font-bold text-amber-300 font-display mt-2">19h00</p>
-        <p class="text-xs text-stone-400 mt-2">Célébrée avec la communauté des frères capucins.</p>
+        <p class="text-xs text-stone-400 mt-2">Le samedi : Messe à <strong>12h00</strong>.</p>
       </div>
 
       <!-- Card 2: Dimanche -->
@@ -58,10 +58,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
         </div>
-        <h3 class="font-semibold text-base text-amber-100">Confessions</h3>
-        <p class="text-xs text-stone-300 mt-1">Réconciliation & Écoute</p>
-        <p class="text-lg font-bold text-amber-300 font-display mt-2">Mardi au Samedi</p>
-        <p class="text-xs text-stone-400 mt-2">17h00 - 18h45 (et samedi matin de 10h à 12h).</p>
+        <h3 class="font-semibold text-base text-amber-100">Confessions & Écoute</h3>
+        <p class="text-xs text-stone-300 mt-1">Mardi au Samedi</p>
+        <p class="text-lg font-bold text-amber-300 font-display mt-2">15h00 - 18h00</p>
+        <p class="text-xs text-stone-400 mt-2">Ven. & Sam. matins : 10h-12h. Également après la messe de 19h.</p>
       </div>
 
       <!-- Card 4: Adoration -->
@@ -70,9 +70,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </div>
         <h3 class="font-semibold text-base text-amber-100">Adoration Eucharistique</h3>
-        <p class="text-xs text-stone-300 mt-1">Chaque vendredi</p>
-        <p class="text-xl font-bold text-amber-300 font-display mt-2">8h30 - 20h30</p>
-        <p class="text-xs text-stone-400 mt-2">Adoration continue tout au long de la journée.</p>
+        <p class="text-xs text-stone-300 mt-1">Tous les vendredis</p>
+        <p class="text-lg font-bold text-amber-300 font-display mt-2">15h00 - 18h30</p>
+        <p class="text-xs text-stone-400 mt-2">& 19h30 - 20h30 (y compris durant les vacances).</p>
       </div>
     </div>
   </div>

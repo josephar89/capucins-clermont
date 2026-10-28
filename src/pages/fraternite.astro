@@ -5,8 +5,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <Layout
   title="La Fraternité & Notre Histoire | Frères Capucins Clermont-Ferrand"
-  description="Découvrez l'histoire de la présence des Frères Capucins à Clermont-Ferrand depuis 1608, la vie quotidienne des frères et leurs missions."
+  description="Découvrez l'histoire de la présence des Frères Capucins à Clermont-Ferrand depuis 1608, le Projet Saint Laurent de Brindes, la vie communautaire et leurs missions fraternelles."
 >
+  <!-- Hero Section -->
   <section class="bg-gradient-to-r from-[#3A2216] to-[#5C3826] text-white py-14 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 uppercase tracking-wider mb-4">
@@ -16,20 +17,114 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         La Fraternité des Frères Capucins
       </h1>
       <p class="mt-4 text-base sm:text-lg text-stone-200 max-w-2xl mx-auto font-serif">
-        Une communauté de frères mineurs au cœur de Clermont-Ferrand, unissant prière contemplative et service des plus démunis.
+        Une communauté internationale de frères mineurs au cœur de Clermont-Ferrand, unissant prière contemplative, simplicité évangélique et accueil inconditionnel des plus fragiles.
       </p>
     </div>
   </section>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12 text-stone-800 font-serif leading-relaxed text-base sm:text-lg">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 text-stone-800 font-serif leading-relaxed text-base sm:text-lg">
     
-    <!-- Hero Image Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="rounded-3xl overflow-hidden shadow-md h-64 bg-stone-200">
-        <img src={`${base}/images/cropped-Ensemble-FILEminimizer.jpg`} alt="Chapelle des Capucins" class="w-full h-full object-cover" />
+    <!-- Feature: Le Portrait & Présentation -->
+    <section class="bg-white rounded-3xl p-8 sm:p-12 border border-stone-200/90 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 items-center">
+      <div class="md:col-span-5 rounded-2xl overflow-hidden shadow-lg h-96 relative group">
+        <img
+          src={`${base}/images/portrait-frere-capucin.jpg`}
+          alt="Frère Mineur Capucin au couvent de Clermont-Ferrand"
+          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
+          <p class="text-white text-xs font-sans italic">« La joie franciscaine naît de la rencontre fraternelle et de la simplicité du cœur. »</p>
+        </div>
       </div>
-      <div class="rounded-3xl overflow-hidden shadow-md h-64 bg-stone-200">
-        <img src={`${base}/images/cropped-P1010588-scaled-1.jpg`} alt="Intérieur de la Chapelle" class="w-full h-full object-cover" />
+
+      <div class="md:col-span-7 space-y-5">
+        <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider block font-sans">Identité & Charisme</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
+          Une Fraternité Internationale et Vivante
+        </h2>
+        <p>
+          Au cœur de la cité arverne, la communauté des Capucins rassemble des frères français et des frères venus de diverses circonscriptions du monde : <strong>Italie, Madagascar et Inde</strong>.
+        </p>
+        <p>
+          Cette diversité d'origines et de cultures est le signe visible d'une même fraternité universelle voulue par saint François d'Assise, où chacun apprend à accueillir l'autre comme un frère donné par le Seigneur.
+        </p>
+        <div class="pt-2">
+          <a
+            href={`${base}/contact`}
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-100 text-[#7B462C] hover:bg-amber-200 font-sans font-semibold text-sm transition"
+          >
+            Venir nous rencontrer à la chapelle &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Projet Saint Laurent de Brindes -->
+    <section class="bg-gradient-to-br from-[#FAF7F2] to-[#F5EFE6] rounded-3xl p-8 sm:p-10 border border-stone-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-[#7B462C] flex items-center justify-center font-bold">
+          ⚜️
+        </div>
+        <div>
+          <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider font-sans block">Renouveau Franciscain</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
+            Le « Projet Saint Laurent de Brindes »
+          </h2>
+        </div>
+      </div>
+
+      <p>
+        Depuis 2014, la fraternité de Clermont-Ferrand s'inscrit au sein du <strong>« Projet Saint Laurent de Brindes »</strong> initié par l'Ordre des Frères Mineurs Capucins. Ce projet a pour vocation de <em>« raviver la flamme du charisme capucin »</em> à partir de lieux clés en Europe pour offrir un témoignage renouvelé et visible dans la société contemporaine.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-sm pt-2">
+        <div class="p-4 rounded-2xl bg-white border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216]">🙏 La prière soignée & assidue</p>
+          <p class="text-stone-600 text-xs leading-relaxed">Les frères se retrouvent 4 fois par jour pour l'oraison silencieuse et la liturgie des heures, source de leur ministère.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216]">🌾 La simplicité de vie</p>
+          <p class="text-stone-600 text-xs leading-relaxed">Un style de vie sobre et modeste, dans le partage des corvées quotidiennes et l'esprit d'enfance évangélique.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216]">🤝 L'accueil du prochain</p>
+          <p class="text-stone-600 text-xs leading-relaxed">Une maison toujours ouverte, une écoute inconditionnelle pour chaque personne franchissant le seuil du couvent.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216]">🔥 Dynamique évangélisatrice</p>
+          <p class="text-stone-600 text-xs leading-relaxed">Annoncer la Bonne Nouvelle avec audace auprès des jeunes, des familles et des personnes éloignées de la foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Break: Community Life & Prayer -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-3xl overflow-hidden shadow-md bg-stone-100 flex flex-col justify-between">
+        <div class="h-64 overflow-hidden">
+          <img
+            src={`${base}/images/fraternite-repas-communaute.jpg`}
+            alt="Partage du repas en communauté au réfectoire des Capucins"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div class="p-5 font-sans">
+          <h3 class="font-bold text-stone-900 text-sm">La table fraternelle</h3>
+          <p class="text-stone-500 text-xs mt-1">Comme dans une famille, les frères partagent les repas et le travail quotidien au couvent.</p>
+        </div>
+      </div>
+
+      <div class="rounded-3xl overflow-hidden shadow-md bg-stone-100 flex flex-col justify-between">
+        <div class="h-64 overflow-hidden">
+          <img
+            src={`${base}/images/freres-priere-adoration.jpg`}
+            alt="Prière et adoration silencieuse des frères"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div class="p-5 font-sans">
+          <h3 class="font-bold text-stone-900 text-sm">Au pied de la Croix</h3>
+          <p class="text-stone-500 text-xs mt-1">Quatre temps d'oraison et de prière rythment la journée pour alimenter l'union à Dieu.</p>
+        </div>
       </div>
     </div>
 
@@ -50,42 +145,73 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </blockquote>
     </section>
 
-    <!-- Section: La Vie Quotidienne -->
-    <section class="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200/90 shadow-xs space-y-5">
-      <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider block font-sans">Vie Fraternelle</span>
-      <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
-        La Vie Quotidienne des Frères
-      </h2>
-      <p>
-        Cinq frères composent aujourd'hui la fraternité de Clermont-Ferrand. Fidèles à l'esprit de saint François d'Assise, les frères partagent les repas, les tâches matérielles du couvent et se rassemblent plusieurs fois par jour pour la prière de l'Église (oraison matinale, office des lectures, vêpres) et la célébration de l'Eucharistie chaque soir à 19h00.
-      </p>
-      <p>
-        Leur fraternité est également un pont international : la communauté entretient des liens étroits avec les frères capucins de Madagascar, d'Éthiopie, de Centrafrique et de la province du Tamil Nadu en Inde.
-      </p>
-    </section>
-
     <!-- Section: Les Missions & Apostolats -->
     <section class="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200/90 shadow-xs space-y-6">
-      <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider block font-sans">Présence Apostolique</span>
-      <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
-        Des Frères au Service de la Cité
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-sm">
-        <div class="p-4 rounded-2xl bg-[#FAF7F2] border border-stone-200">
-          <p class="font-bold text-[#3A2216] mb-1">🏥 Aumônerie des hôpitaux</p>
-          <p class="text-stone-600">Présence et soutien auprès des malades et de leurs familles dans les centres hospitaliers clermontois.</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider block font-sans">Présence Apostolique</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
+            Des Frères au Service de la Cité & des Plus Pauvres
+          </h2>
         </div>
-        <div class="p-4 rounded-2xl bg-[#FAF7F2] border border-stone-200">
-          <p class="font-bold text-[#3A2216] mb-1">🕊️ Réseau Welcome</p>
-          <p class="text-stone-600">Accueil bienveillant et accompagnement des demandeurs d'asile et personnes en situation de précarité.</p>
+      </div>
+
+      <!-- Feature with Image: Dialogue with youth -->
+      <div class="rounded-2xl overflow-hidden border border-stone-200 grid grid-cols-1 md:grid-cols-12 bg-[#FAF7F2]">
+        <div class="md:col-span-5 h-64 md:h-auto">
+          <img
+            src={`${base}/images/frere-dialogue-jeunes.jpg`}
+            alt="Échange fraternel avec les jeunes dans le jardin du couvent"
+            class="w-full h-full object-cover"
+          />
         </div>
-        <div class="p-4 rounded-2xl bg-[#FAF7F2] border border-stone-200">
-          <p class="font-bold text-[#3A2216] mb-1">☕ Café Chrétien « Cappuccino »</p>
-          <p class="text-stone-600">Lieu d'écoute, de convivialité et d'accueil inconditionnel en centre-ville.</p>
+        <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center space-y-3 font-sans">
+          <span class="text-xs font-bold text-[#7B462C] uppercase tracking-wider">Pastorale des Jeunes & Écoute</span>
+          <h3 class="font-display font-bold text-xl text-[#3A2216]">
+            Être proches, disponibles et à l'écoute
+          </h3>
+          <p class="text-stone-600 text-sm font-serif leading-relaxed">
+            Les frères partagent leur foi avec les jeunes générations (aumôneries étudiantes, <em>Jefra</em>) et ouvrent régulièrement les portes de leur jardin et de leurs salles pour des temps de réflexion, de catéchèse ou simplement d'amitié sincère.
+          </p>
         </div>
-        <div class="p-4 rounded-2xl bg-[#FAF7F2] border border-stone-200">
-          <p class="font-bold text-[#3A2216] mb-1">🙏 Groupe Padre Pio</p>
-          <p class="text-stone-600">Prière mensuelle, confessions et animation spirituelle pour les dévots de saint Padre Pio.</p>
+      </div>
+
+      <!-- Grid of Specific Ministries from Province page -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-sm pt-2">
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216] flex items-center gap-2">
+            <span>☕</span> Le Café Chrétien « Cappuccino »
+          </p>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Situé rue du Port à Clermont-Ferrand, frères capucins et laïcs y offrent un lieu convivial de partage, de café chaud et d'écoute fraternelle inconditionnelle pour tous les passants.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216] flex items-center gap-2">
+            <span>⛓️</span> Aumônerie de Prison (Riom)
+          </p>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Visite régulière et présence auprès des détenus au centre pénitentiaire de Riom, portant un message d'espérance, de dignité et de miséricorde.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216] flex items-center gap-2">
+            <span>🌱</span> Association « Mains Ouvertes »
+          </p>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Deux frères de la communauté sont activement engagés au sein de cette œuvre de réinsertion sociale et d'entraide pour accompagner les personnes en situation de précarité.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-1">
+          <p class="font-bold text-[#3A2216] flex items-center gap-2">
+            <span>⛪</span> Aide en Paroisse & Confessions
+          </p>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Célébrations dominicales dans les paroisses environnantes du diocèse et accueil permanent pour le sacrement de réconciliation à la chapelle.
+          </p>
         </div>
       </div>
     </section>
