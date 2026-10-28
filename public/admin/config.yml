@@ -30,7 +30,7 @@ collections:
       preview: true
     fields:
       - { label: "Titre de l'événement", name: "title", widget: "string", hint: "Ex: Vigile Pascale, Messe de rentrée, Fête de saint François" }
-      - { label: "Date de l'événement", name: "date", widget: "date", format: "YYYY-MM-DD", dateFormat: "DD/MM/YYYY", hint: "Le jour où aura lieu l'événement" }
+      - { label: "Date de l'événement", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, hint: "Le jour où aura lieu l'événement" }
       - { label: "Horaires", name: "time", widget: "string", required: false, hint: "Ex: '18h30 - 20h00' ou 'Toute la journée'" }
       - { label: "Lieu", name: "location", widget: "string", default: "Chapelle des Capucins, 9 Bd Lafayette", required: false }
       - { label: "Mettre à la une sur l'accueil", name: "featured", widget: "boolean", default: false, hint: "Cochez pour afficher cet événement en priorité sur la page d'accueil" }
@@ -51,7 +51,7 @@ collections:
       preview: true
     fields:
       - { label: "Titre de l'article", name: "title", widget: "string" }
-      - { label: "Date de publication", name: "date", widget: "date", format: "YYYY-MM-DD", dateFormat: "DD/MM/YYYY" }
+      - { label: "Date de publication", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Auteur", name: "author", widget: "string", default: "Frères Capucins" }
       - { label: "Photo d'illustration", name: "image", widget: "image", required: false }
       - { label: "Court résumé", name: "summary", widget: "text" }
