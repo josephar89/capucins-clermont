@@ -1,10 +1,7 @@
 # Decap CMS Configuration for Frères Capucins Clermont-Ferrand
 backend:
-  name: github
-  repo: josephar89/capucins-clermont
+  name: git-gateway
   branch: main
-  base_url: https://capucins-clermont.org
-  # auth_endpoint: api/auth # optional custom auth proxy if needed
 
 # Local development backend support (npx decap-server)
 local_backend: true

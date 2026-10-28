@@ -44,6 +44,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .font-serif { font-family: 'Lora', Georgia, serif; }
       .font-sans { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     </style>
+    <!-- Netlify Identity Widget for invite redirection -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="min-h-full flex flex-col font-sans text-stone-800 bg-[#FAF7F2] antialiased selection:bg-amber-200 selection:text-amber-900">
     <!-- Top notification banner for essential hours & quick call -->
@@ -263,6 +265,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       if (btn && menu) {
         btn.addEventListener('click', () => {
           menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+    <!-- Netlify Identity login redirect handler -->
+    <script>
+      // @ts-ignore
+      if (window.netlifyIdentity) {
+        // @ts-ignore
+        window.netlifyIdentity.on("init", (user: any) => {
+          if (!user) {
+            // @ts-ignore
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
         });
       }
     </script>
