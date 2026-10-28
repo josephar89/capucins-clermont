@@ -3,6 +3,7 @@ backend:
   name: github
   repo: josephar89/capucins-clermont
   branch: main
+  auth_methods: [token]
 
 # Local development backend support (npx decap-server)
 local_backend: true
