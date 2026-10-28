@@ -22,68 +22,71 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <Layout>
   <!-- Hero Section -->
-  <section class="relative bg-stone-950 text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
-    <!-- Atmospheric background altar image with Franciscan warm dark overlay -->
+  <section class="relative bg-stone-950 text-white min-h-[85vh] sm:min-h-[88vh] flex flex-col justify-end overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-16">
+    <!-- Atmospheric background altar image with directional lighting -->
     <div class="absolute inset-0 pointer-events-none">
       <img
         src={`${base}/images/chapelle-autel-choeur.jpg`}
         alt="Chœur et Maître-Autel de la Chapelle des Capucins"
-        class="w-full h-full object-cover object-center scale-105"
+        class="w-full h-full object-cover object-[center_20%] scale-100"
       />
-      <!-- Gradient overlay for text contrast while highlighting the sanctuary -->
-      <div class="absolute inset-0 bg-gradient-to-b from-[#24130A]/85 via-[#381E10]/75 to-[#1C0F08]/90"></div>
+      <!-- Top subtle vignette for header contrast -->
+      <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
+      
+      <!-- Bottom rich gradient: keeps the upper sanctuary luminous while providing crisp contrast for text over the steps -->
+      <div class="absolute inset-x-0 bottom-0 h-4/5 sm:h-3/4 bg-gradient-to-t from-stone-950 via-[#1F120B]/90 via-55% to-transparent"></div>
     </div>
     
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-5">
       <!-- Tag / Subtitle -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-400/30 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 backdrop-blur-md">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 text-amber-200 border border-amber-400/30 text-xs sm:text-sm font-semibold tracking-wide uppercase backdrop-blur-md shadow-md">
         <span>🕊️</span>
-        Ordre des Frères Mineurs Capucins — Clermont-Ferrand
+        Chapelle des Frères Mineurs Capucins — Clermont-Ferrand
       </div>
 
       <!-- Main Headline -->
-      <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-amber-50 tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none drop-shadow-md">
+      <h1 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-amber-50 tracking-tight leading-tight sm:leading-tight drop-shadow-lg">
         Une Maison de Prière, de Silence et de Fraternité
       </h1>
 
-      <p class="mt-6 text-base sm:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed font-serif drop-shadow-sm">
-        Depuis plus de 400 ans au cœur de Clermont-Ferrand, les frères capucins vous accueillent chaque jour pour célébrer l'Eucharistie, prier et partager la joie franciscaine.
+      <p class="text-sm sm:text-base lg:text-lg text-stone-200 max-w-2xl mx-auto leading-relaxed font-serif drop-shadow-md">
+        Au cœur de Clermont-Ferrand, face au Jardin Lecoq, les frères vous accueillent chaque jour pour la prière, la messe quotidienne, l'adoration et l'écoute fraternelle.
       </p>
 
       <!-- Primary Action Buttons -->
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
         <a
           href={`${base}/horaires`}
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-amber-500 text-stone-950 font-bold text-base hover:bg-amber-400 shadow-lg shadow-amber-900/30 transition-all active:scale-95"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-stone-950 font-bold text-sm sm:text-base hover:bg-amber-400 shadow-lg shadow-amber-900/40 transition-all active:scale-95"
         >
           <svg class="w-5 h-5 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           Horaires des Messes & Adoration
         </a>
         <a
           href={`${base}/evenements`}
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/20 backdrop-blur-md transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-semibold text-sm sm:text-base border border-white/25 backdrop-blur-md transition-all"
         >
           Agenda & Événements &rarr;
         </a>
       </div>
 
       <!-- Quick Highlights bar -->
-      <div class="mt-14 pt-8 border-t border-white/10 max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-xs sm:text-sm text-stone-300">
+      <div class="pt-6 border-t border-white/15 max-w-2xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-xs text-stone-300">
         <div>
-          <span class="block text-2xl font-bold text-amber-300 font-display">1608</span>
+          <span class="block text-xl font-bold text-amber-300 font-display">1608</span>
           <span class="text-stone-400">Présence à Clermont</span>
         </div>
         <div>
-          <span class="block text-2xl font-bold text-amber-300 font-display">19h00</span>
+          <span class="block text-xl font-bold text-amber-300 font-display">19h00</span>
           <span class="text-stone-400">Messe quotidienne</span>
         </div>
         <div>
-          <span class="block text-2xl font-bold text-amber-300 font-display">Tous les jours</span>
+          <span class="block text-xl font-bold text-amber-300 font-display">8h00 – 20h30</span>
           <span class="text-stone-400">Chapelle ouverte</span>
         </div>
         <div>
-          <span class="block text-2xl font-bold text-amber-300 font-display">Vendredi</span>
-          <span class="text-stone-400">Adoration 8h30-20h30</span>
+          <span class="block text-xl font-bold text-amber-300 font-display">Vendredi</span>
+          <span class="text-stone-400">Adoration continue</span>
         </div>
       </div>
     </div>
