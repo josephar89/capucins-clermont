@@ -1,6 +1,7 @@
-# Decap CMS Configuration for Frères Capucins Clermont-Ferrand
+# Decap CMS Configuration for Frères Capucins Clermont-Ferrand (Direct GitHub Backend)
 backend:
-  name: git-gateway
+  name: github
+  repo: josephar89/capucins-clermont
   branch: main
 
 # Local development backend support (npx decap-server)

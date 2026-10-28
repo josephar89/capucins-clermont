@@ -4,22 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Espace Gestion | Frères Capucins Clermont-Ferrand</title>
-    <!-- Netlify Identity Widget for Google / Email authentication -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Sveltia CMS: 100% Client-Side CMS designed for GitHub Pages -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
   </head>
   <body>
-    <!-- Decap CMS Application -->
-    <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>
