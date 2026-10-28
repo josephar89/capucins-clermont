@@ -4,54 +4,111 @@ import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 
 const allEvents = await getCollection('events');
-const sortedEvents = allEvents.sort(
-  (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
-);
+const now = new Date();
+
+// Upcoming events: date >= today (sorted soonest first)
+const upcomingEvents = allEvents
+  .filter((e) => new Date(e.data.date) >= now || e.data.date === now.toISOString().slice(0, 10))
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+// Past events (Archives): date < today (sorted most recent past first)
+const pastEvents = allEvents
+  .filter((e) => new Date(e.data.date) < now && e.data.date !== now.toISOString().slice(0, 10))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
-  title="Agenda & Événements | Frères Capucins Clermont-Ferrand"
-  description="Découvrez l'agenda des événements, retraites, célébrations de fêtes et rencontres spirituelles chez les Frères Capucins à Clermont-Ferrand."
+  title="Agenda & Archives des Événements | Frères Capucins Clermont-Ferrand"
+  description="Découvrez l'agenda des événements à venir et les archives chronologiques des célébrations passées chez les Frères Capucins à Clermont-Ferrand."
 >
   <section class="bg-gradient-to-r from-[#3A2216] to-[#5C3826] text-white py-14 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 uppercase tracking-wider mb-4">
-        Calendrier & Activités
+        Calendrier & Mémoire
       </span>
       <h1 class="font-display font-bold text-3xl sm:text-5xl text-amber-100">
         Agenda des Événements
       </h1>
       <p class="mt-4 text-base sm:text-lg text-stone-200 max-w-2xl mx-auto font-serif">
-        Retrouvez les prochaines fêtes, veillées de prière, récollections et temps forts fraternels.
+        Retrouvez les prochaines fêtes et retraites à venir, ainsi que l'historique complet de nos rencontres passées.
       </p>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-    {sortedEvents.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedEvents.map((event) => (
-          <EventCard
-            id={event.id}
-            title={event.data.title}
-            date={event.data.date}
-            time={event.data.time}
-            location={event.data.location}
-            summary={event.data.summary}
-            image={event.data.image}
-            featured={event.data.featured}
-          />
-        ))}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+    
+    <!-- Section 1: Upcoming Events -->
+    <section>
+      <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-8">
+        <div>
+          <span class="text-xs uppercase font-bold text-emerald-800 tracking-wider">À venir</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#3A2216]">
+            Prochains Événements & Rencontres
+          </h2>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+          {upcomingEvents.length} {upcomingEvents.length > 1 ? 'événements prévus' : 'événement prévu'}
+        </span>
       </div>
-    ) : (
-      <div class="text-center py-16 bg-white rounded-3xl border border-stone-200 p-8">
-        <p class="text-lg text-stone-600 font-serif">Aucun événement à venir pour le moment.</p>
-        <p class="text-sm text-stone-400 mt-2">Revenez bientôt ou consultez les horaires habituels des offices.</p>
-        <a href={`${base}/horaires`} class="inline-block mt-4 text-[#7B462C] font-semibold underline">
-          Voir les horaires réguliers &rarr;
-        </a>
-      </div>
+
+      {upcomingEvents.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {upcomingEvents.map((event) => (
+            <EventCard
+              id={event.id}
+              title={event.data.title}
+              date={event.data.date}
+              time={event.data.time}
+              location={event.data.location}
+              summary={event.data.summary}
+              image={event.data.image}
+              featured={event.data.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 bg-white rounded-3xl border border-stone-200 p-8">
+          <p class="text-base text-stone-600 font-serif">Aucun nouvel événement planifié pour le moment.</p>
+          <a href={`${base}/horaires`} class="inline-block mt-3 text-xs font-semibold text-[#7B462C] underline">
+            Consulter les horaires réguliers des messes &rarr;
+          </a>
+        </div>
+      )}
+    </section>
+
+    <!-- Section 2: Past Events Archive (Chronological) -->
+    {pastEvents.length > 0 && (
+      <section class="pt-8 border-t border-stone-300">
+        <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-8">
+          <div>
+            <span class="text-xs uppercase font-bold text-stone-500 tracking-wider">Archives</span>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-stone-700">
+              Archives des Événements Passés
+            </h2>
+          </div>
+          <span class="text-xs text-stone-500">
+            Classés par ordre chronologique
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-85 hover:opacity-100 transition-opacity">
+          {pastEvents.map((event) => (
+            <EventCard
+              id={event.id}
+              title={event.data.title}
+              date={event.data.date}
+              time={event.data.time}
+              location={event.data.location}
+              summary={event.data.summary}
+              image={event.data.image}
+              featured={false}
+            />
+          ))}
+        </div>
+      </section>
     )}
+
   </div>
 </Layout>
