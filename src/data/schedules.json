@@ -1,0 +1,65 @@
+{
+  "chapel": {
+    "title": "Ouverture de la Chapelle",
+    "weekdays": "Tous les jours de 8h00 à 20h30",
+    "sunday": "Dimanche de 8h30 à 20h00",
+    "address": "9 Boulevard Lafayette, 63000 Clermont-Ferrand",
+    "landmark": "Face au Jardin Lecoq"
+  },
+  "messes": [
+    {
+      "day": "Du lundi au vendredi",
+      "time": "19h00",
+      "description": "Messe quotidienne célébrée par la communauté des frères"
+    },
+    {
+      "day": "Dimanche et fêtes",
+      "time": "10h00",
+      "description": "Messe dominicale de la communauté"
+    },
+    {
+      "day": "Dimanche soir",
+      "time": "19h00",
+      "description": "Messe du soir (précédée des Vêpres à 18h30)"
+    }
+  ],
+  "confessions": {
+    "period": "D'octobre à juin",
+    "slots": [
+      {
+        "days": "Mardi au vendredi",
+        "time": "17h00 - 18h45",
+        "description": "Permanence d'un prêtre disponible pour le sacrement de réconciliation"
+      },
+      {
+        "days": "Samedi",
+        "time": "10h00 - 12h00 & 16h30 - 18h45",
+        "description": "Confessions et écoute spirituelle"
+      }
+    ]
+  },
+  "adoration": [
+    {
+      "day": "Vendredi",
+      "time": "8h30 - 20h30",
+      "description": "Adoration continue du Saint Sacrement toute la journée (de septembre à fin juin)"
+    },
+    {
+      "day": "Mardi",
+      "time": "20h00 - 21h00",
+      "description": "Soirée d'adoration animée par la Scola Capucinorum (hors vacances scolaires)"
+    },
+    {
+      "day": "Dimanche",
+      "time": "18h30 - 19h30",
+      "description": "Vêpres, exposition du Saint Sacrement et Salut à 19h30"
+    }
+  ],
+  "contact": {
+    "name": "Frères Mineurs Capucins de Clermont-Ferrand",
+    "address": "9 Boulevard Lafayette, 63000 Clermont-Ferrand",
+    "phone": "04 73 92 66 38",
+    "email": "capucins.clermont@gmail.com",
+    "google_maps_url": "https://maps.google.com/?q=9+Boulevard+Lafayette+63000+Clermont-Ferrand"
+  }
+}

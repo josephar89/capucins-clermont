@@ -1,0 +1,78 @@
+---
+import schedules from '../data/schedules.json';
+---
+
+<section class="bg-gradient-to-br from-[#452718] to-[#2D1B11] text-[#FAF7F2] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-amber-900/40 relative overflow-hidden">
+  <!-- Subtle decorative background pattern -->
+  <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-amber-600/10 blur-2xl pointer-events-none"></div>
+  
+  <div class="relative z-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-amber-900/50 pb-6">
+      <div>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase tracking-wider mb-2">
+          Prière & Célébrations
+        </span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-amber-100">
+          Horaires des Messes & de la Chapelle
+        </h2>
+        <p class="text-stone-300 text-sm mt-1">
+          La chapelle est ouverte chaque jour de 8h00 à 20h30 pour le recueillement personnel et la prière.
+        </p>
+      </div>
+      <a href="/horaires" class="inline-flex items-center gap-1 text-sm font-semibold text-amber-300 hover:text-white transition group whitespace-nowrap">
+        Consulter tous les horaires détaillés
+        <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <!-- Card 1: Messes Semaine -->
+      <div class="bg-black/25 backdrop-blur-sm p-5 rounded-2xl border border-amber-900/40 hover:border-amber-600/50 transition">
+        <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-semibold text-base text-amber-100">Messe Quotidienne</h3>
+        <p class="text-xs text-stone-300 mt-1">Du lundi au vendredi</p>
+        <p class="text-2xl font-bold text-amber-300 font-display mt-2">19h00</p>
+        <p class="text-xs text-stone-400 mt-2">Célébrée avec la communauté des frères capucins.</p>
+      </div>
+
+      <!-- Card 2: Dimanche -->
+      <div class="bg-black/25 backdrop-blur-sm p-5 rounded-2xl border border-amber-900/40 hover:border-amber-600/50 transition">
+        <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-semibold text-base text-amber-100">Messes du Dimanche</h3>
+        <p class="text-xs text-stone-300 mt-1">Dimanches et solennités</p>
+        <div class="flex items-baseline gap-2 mt-2">
+          <span class="text-2xl font-bold text-amber-300 font-display">10h00</span>
+          <span class="text-stone-400 text-sm">&</span>
+          <span class="text-2xl font-bold text-amber-300 font-display">19h00</span>
+        </div>
+        <p class="text-xs text-stone-400 mt-2">Vêpres chantées à 18h30 avant la messe du soir.</p>
+      </div>
+
+      <!-- Card 3: Confessions -->
+      <div class="bg-black/25 backdrop-blur-sm p-5 rounded-2xl border border-amber-900/40 hover:border-amber-600/50 transition">
+        <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="font-semibold text-base text-amber-100">Confessions</h3>
+        <p class="text-xs text-stone-300 mt-1">Réconciliation & Écoute</p>
+        <p class="text-lg font-bold text-amber-300 font-display mt-2">Mardi au Samedi</p>
+        <p class="text-xs text-stone-400 mt-2">17h00 - 18h45 (et samedi matin de 10h à 12h).</p>
+      </div>
+
+      <!-- Card 4: Adoration -->
+      <div class="bg-black/25 backdrop-blur-sm p-5 rounded-2xl border border-amber-900/40 hover:border-amber-600/50 transition">
+        <div class="w-10 h-10 rounded-xl bg-amber-900/60 flex items-center justify-center text-amber-300 mb-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3 class="font-semibold text-base text-amber-100">Adoration Eucharistique</h3>
+        <p class="text-xs text-stone-300 mt-1">Chaque vendredi</p>
+        <p class="text-xl font-bold text-amber-300 font-display mt-2">8h30 - 20h30</p>
+        <p class="text-xs text-stone-400 mt-2">Adoration continue tout au long de la journée.</p>
+      </div>
+    </div>
+  </div>
+</section>

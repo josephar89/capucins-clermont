@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { id: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+
+const eventDate = new Date(event.data.date).toLocaleDateString('fr-FR', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${event.data.title} | Frères Capucins Clermont-Ferrand`}
+  description={event.data.summary}
+  image={event.data.image}
+>
+  <article class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Back Link -->
+      <div>
+        <a href="/evenements" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7B462C] hover:underline">
+          &larr; Retour à tous les événements
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="space-y-4">
+        <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-stone-500">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-[#7B462C] font-semibold">
+            📅 {eventDate}
+          </span>
+          {event.data.time && (
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 text-stone-700">
+              ⏰ {event.data.time}
+            </span>
+          )}
+          {event.data.location && (
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 text-stone-700">
+              📍 {event.data.location}
+            </span>
+          )}
+        </div>
+
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-[#3A2216] leading-tight">
+          {event.data.title}
+        </h1>
+
+        <p class="text-base sm:text-xl text-stone-600 font-serif leading-relaxed">
+          {event.data.summary}
+        </p>
+      </header>
+
+      <!-- Featured Image -->
+      {event.data.image && (
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-stone-200 max-h-[500px] w-full bg-stone-100">
+          <img
+            src={event.data.image}
+            alt={event.data.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      <!-- Content Body -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-xs prose prose-stone max-w-none prose-headings:font-display prose-headings:text-[#3A2216] prose-a:text-[#7B462C] prose-p:leading-relaxed font-serif text-base sm:text-lg">
+        <Content />
+      </div>
+
+      <!-- Quick Contact Box -->
+      <div class="p-6 rounded-2xl bg-amber-50/70 border border-amber-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs sm:text-sm text-stone-700">
+          <p class="font-bold text-[#3A2216]">Une question sur cet événement ?</p>
+          <p class="text-stone-600">Contactez la fraternité des Capucins au 04 73 92 66 38 ou par email.</p>
+        </div>
+        <a href="/contact" class="px-5 py-2.5 rounded-xl bg-[#7B462C] text-white font-semibold text-xs sm:text-sm hover:bg-[#5C3826] transition whitespace-nowrap">
+          Contacter la Fraternité
+        </a>
+      </div>
+
+    </div>
+  </article>
+</Layout>

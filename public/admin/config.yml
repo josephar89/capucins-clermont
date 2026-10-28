@@ -1,0 +1,91 @@
+# Decap CMS Configuration for Frères Capucins Clermont-Ferrand
+backend:
+  name: github
+  repo: your-github-username/clermont-website # Change to your actual GitHub repo: e.g. "myuser/capucins-clermont"
+  branch: main
+  base_url: https://capucins-clermont.org
+  # auth_endpoint: api/auth # optional custom auth proxy if needed
+
+# Local development backend support (npx decap-server)
+local_backend: true
+
+# Media upload directory
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Internationalization
+locale: "fr"
+
+collections:
+  # -------------------------------------------------------------
+  # 1. ÉVÉNEMENTS (Events & Agenda)
+  # -------------------------------------------------------------
+  - name: "events"
+    label: "📅 Événements & Fêtes"
+    label_singular: "Événement"
+    folder: "src/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Titre de l'événement", name: "title", widget: "string", hint: "Ex: Vigile Pascale, Messe de rentrée, Fête de saint François" }
+      - { label: "Date de l'événement", name: "date", widget: "date", format: "YYYY-MM-DD", dateFormat: "DD/MM/YYYY", hint: "Le jour où aura lieu l'événement" }
+      - { label: "Horaires", name: "time", widget: "string", required: false, hint: "Ex: '18h30 - 20h00' ou 'Toute la journée'" }
+      - { label: "Lieu", name: "location", widget: "string", default: "Chapelle des Capucins, 9 Bd Lafayette", required: false }
+      - { label: "Mettre à la une sur l'accueil", name: "featured", widget: "boolean", default: false, hint: "Cochez pour afficher cet événement en priorité sur la page d'accueil" }
+      - { label: "Affiche ou Photo", name: "image", widget: "image", required: false, hint: "Glissez ou choisissez une image depuis votre ordinateur ou smartphone" }
+      - { label: "Court résumé (2-3 phrases)", name: "summary", widget: "text", hint: "Affiché sur la carte d'événement et les réseaux sociaux" }
+      - { label: "Texte complet & Programme", name: "body", widget: "markdown", hint: "Description détaillée de l'événement, déroulement, intervenants..." }
+
+  # -------------------------------------------------------------
+  # 2. ACTUALITÉS & CHRONIQUES (News & Life of the Friary)
+  # -------------------------------------------------------------
+  - name: "posts"
+    label: "📰 Actualités & Chroniques"
+    label_singular: "Article"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Titre de l'article", name: "title", widget: "string" }
+      - { label: "Date de publication", name: "date", widget: "date", format: "YYYY-MM-DD", dateFormat: "DD/MM/YYYY" }
+      - { label: "Auteur", name: "author", widget: "string", default: "Frères Capucins" }
+      - { label: "Photo d'illustration", name: "image", widget: "image", required: false }
+      - { label: "Court résumé", name: "summary", widget: "text" }
+      - { label: "Texte de l'article", name: "body", widget: "markdown" }
+      - label: "Catégories"
+        name: "tags"
+        widget: "list"
+        default: ["Actualités"]
+        required: false
+
+  # -------------------------------------------------------------
+  # 3. HORAIRES HABITUELS (General Schedules Data)
+  # -------------------------------------------------------------
+  - name: "schedules_config"
+    label: "⏰ Horaires Réguliers"
+    files:
+      - file: "src/data/schedules.json"
+        label: "Configuration des Horaires & Contact"
+        name: "schedules"
+        fields:
+          - label: "Chapelle"
+            name: "chapel"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Horaires Semaine", name: "weekdays", widget: "string" }
+              - { label: "Horaires Dimanche", name: "sunday", widget: "string" }
+              - { label: "Adresse", name: "address", widget: "string" }
+              - { label: "Repère", name: "landmark", widget: "string" }
+          - label: "Coordonnées de Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Nom", name: "name", widget: "string" }
+              - { label: "Adresse", name: "address", widget: "string" }
+              - { label: "Téléphone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }

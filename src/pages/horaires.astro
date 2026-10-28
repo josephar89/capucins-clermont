@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import schedules from '../data/schedules.json';
+---
+
+<Layout
+  title="Horaires des Messes, Confessions et Adoration | Frères Capucins Clermont-Ferrand"
+  description="Consultez les horaires complets des messes de semaine et du dimanche, permanences de confessions et adoration eucharistique à la chapelle des Capucins de Clermont-Ferrand."
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-r from-[#3A2216] to-[#5C3826] text-white py-14 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 uppercase tracking-wider mb-4">
+        Liturgie & Sacrements
+      </span>
+      <h1 class="font-display font-bold text-3xl sm:text-5xl text-amber-100">
+        Horaires des Offices & de la Chapelle
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-stone-200 max-w-2xl mx-auto font-serif">
+        La chapelle des Capucins (9 Boulevard Lafayette) est un lieu ouvert à tous pour le recueillement, la prière communautaire et les sacrements.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-12">
+    
+    <!-- Quick Overview Box -->
+    <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200 text-stone-800 flex items-start gap-4">
+      <div class="w-10 h-10 rounded-xl bg-amber-200 text-amber-900 flex items-center justify-center shrink-0">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="text-sm space-y-1">
+        <p class="font-bold text-base text-[#3A2216]">Ouverture quotidienne de la Chapelle</p>
+        <p class="text-stone-700">Tous les jours de la semaine : <strong>8h00 – 20h30</strong>. Le dimanche : <strong>8h30 – 20h00</strong>.</p>
+        <p class="text-stone-500 text-xs">Accès libre et silencieux face au Jardin Lecoq.</p>
+      </div>
+    </div>
+
+    <!-- Section 1: Messes -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-xs space-y-6">
+      <div class="flex items-center gap-3 border-b border-stone-200 pb-4">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#7B462C] flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h2 class="font-display font-bold text-2xl text-[#3A2216]">Célébrations Eucharistiques (Messes)</h2>
+          <p class="text-xs text-stone-500">L'Eucharistie est célébrée chaque jour avec la communauté des frères.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200">
+          <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider">En Semaine</span>
+          <p class="text-3xl font-display font-bold text-stone-900 mt-2">19h00</p>
+          <p class="text-sm font-semibold text-stone-700 mt-1">Du lundi au vendredi</p>
+          <p class="text-xs text-stone-500 mt-2">Messe quotidienne de la fraternité.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200">
+          <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider">Dimanche Matin</span>
+          <p class="text-3xl font-display font-bold text-stone-900 mt-2">10h00</p>
+          <p class="text-sm font-semibold text-stone-700 mt-1">Dimanches et jours de fête</p>
+          <p class="text-xs text-stone-500 mt-2">Messe solennelle communautaire.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200">
+          <span class="text-xs uppercase font-bold text-[#7B462C] tracking-wider">Dimanche Soir</span>
+          <p class="text-3xl font-display font-bold text-stone-900 mt-2">19h00</p>
+          <p class="text-sm font-semibold text-stone-700 mt-1">Messe vespérale</p>
+          <p class="text-xs text-stone-500 mt-2">Précédée des Vêpres chantées à 18h30.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Confessions -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-xs space-y-6">
+      <div class="flex items-center gap-3 border-b border-stone-200 pb-4">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#7B462C] flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <div>
+          <h2 class="font-display font-bold text-2xl text-[#3A2216]">Sacrement de Réconciliation & Confessions</h2>
+          <p class="text-xs text-stone-500">De septembre à fin juin, un prêtre est présent à la chapelle pour vous écouter et vous confesser.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-2">
+          <h3 class="font-bold text-base text-stone-900">Du Mardi au Vendredi</h3>
+          <p class="text-2xl font-bold font-display text-[#7B462C]">17h00 – 18h45</p>
+          <p class="text-xs text-stone-600">Un frère prêtre est disponible au confessionnal ou à l'accueil avant la messe du soir.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 space-y-2">
+          <h3 class="font-bold text-base text-stone-900">Le Samedi</h3>
+          <div class="space-y-1">
+            <p class="text-xl font-bold font-display text-[#7B462C]">Matin : 10h00 – 12h00</p>
+            <p class="text-xl font-bold font-display text-[#7B462C]">Après-midi : 16h30 – 18h45</p>
+          </div>
+          <p class="text-xs text-stone-600">Permanences d'écoute spirituelle et sacrement de réconciliation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Adoration Eucharistique -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-xs space-y-6">
+      <div class="flex items-center gap-3 border-b border-stone-200 pb-4">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#7B462C] flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <div>
+          <h2 class="font-display font-bold text-2xl text-[#3A2216]">Adoration du Saint Sacrement</h2>
+          <p class="text-xs text-stone-500">Temps de prière silencieuse devant le Seigneur présent dans l'Eucharistie.</p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-bold text-base text-[#3A2216]">Le Vendredi : Adoration Continue</h3>
+            <p class="text-xs text-stone-600 mt-1">De septembre à fin juin (hors vacances scolaires). Plus de 150 personnes viennent s'y relayer chaque semaine.</p>
+          </div>
+          <span class="px-4 py-2 rounded-xl bg-[#7B462C] text-white font-display font-bold text-base whitespace-nowrap text-center">
+            8h30 – 20h30
+          </span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-bold text-base text-[#3A2216]">Le Mardi : Soirée Scola Capucinorum</h3>
+            <p class="text-xs text-stone-600 mt-1">Adoration animée par des chants polyphoniques et prières méditées pour étudiants et jeunes pros.</p>
+          </div>
+          <span class="px-4 py-2 rounded-xl bg-stone-800 text-amber-200 font-display font-bold text-base whitespace-nowrap text-center">
+            20h00 – 21h00
+          </span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-bold text-base text-[#3A2216]">Le Dimanche : Vêpres & Salut</h3>
+            <p class="text-xs text-stone-600 mt-1">Vêpres à 18h30 suivies de l'exposition et du Salut du Saint Sacrement à 19h30.</p>
+          </div>
+          <span class="px-4 py-2 rounded-xl bg-stone-800 text-amber-200 font-display font-bold text-base whitespace-nowrap text-center">
+            18h30 – 19h30
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notice for holidays -->
+    <div class="p-5 rounded-2xl bg-stone-100 border border-stone-200 text-center text-xs text-stone-600">
+      <p>💡 En période de vacances scolaires ou lors des grandes fêtes liturgiques (Noël, Semaine Sainte, Pâques), des horaires particuliers peuvent s'appliquer. Consultez l'onglet <a href="/evenements" class="text-[#7B462C] font-bold underline">Événements</a> ou appelez au <a href="tel:0473926638" class="text-[#7B462C] font-bold underline">04 73 92 66 38</a>.</p>
+    </div>
+
+  </div>
+</Layout>

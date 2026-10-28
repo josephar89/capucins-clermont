@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const postDate = new Date(post.data.date).toLocaleDateString('fr-FR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${post.data.title} | Frères Capucins Clermont-Ferrand`}
+  description={post.data.summary}
+  image={post.data.image}
+>
+  <article class="py-12 sm:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Back Link -->
+      <div>
+        <a href="/actualites" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7B462C] hover:underline">
+          &larr; Retour à toutes les actualités
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="space-y-4">
+        <div class="flex items-center gap-2 text-xs sm:text-sm text-stone-500">
+          <span class="px-2.5 py-1 rounded-md bg-stone-100 text-stone-700 font-medium">
+            {post.data.tags?.[0] || 'Actualités'}
+          </span>
+          <span>•</span>
+          <time datetime={post.data.date}>{postDate}</time>
+          <span>•</span>
+          <span>Par {post.data.author}</span>
+        </div>
+
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-[#3A2216] leading-tight">
+          {post.data.title}
+        </h1>
+
+        <p class="text-base sm:text-lg text-stone-600 font-serif leading-relaxed italic border-l-2 border-amber-600 pl-4 py-1">
+          {post.data.summary}
+        </p>
+      </header>
+
+      <!-- Featured Image -->
+      {post.data.image && (
+        <div class="rounded-3xl overflow-hidden shadow-md border border-stone-200 max-h-[420px] w-full bg-stone-100">
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      <!-- Post Body -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/80 shadow-xs prose prose-stone max-w-none prose-headings:font-display prose-headings:text-[#3A2216] prose-a:text-[#7B462C] prose-p:leading-relaxed font-serif text-base sm:text-lg">
+        <Content />
+      </div>
+
+    </div>
+  </article>
+</Layout>

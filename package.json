@@ -1,0 +1,18 @@
+{
+  "name": "capucins-clermont",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Nouveau site des Frères Capucins de Clermont-Ferrand (Astro + Tailwind + Decap CMS)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "admin": "npx decap-server"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.4.3",
+    "tailwindcss": "^4.1.18"
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#5C3826"/>
+  <!-- Franciscan Tau Cross -->
+  <path d="M6 10H26M16 10V25M11 10C11 8 13 7.5 16 7.5S21 8 21 10" stroke="#FDE68A" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
