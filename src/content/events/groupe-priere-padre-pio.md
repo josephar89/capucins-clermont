@@ -4,7 +4,7 @@ date: "2026-11-15"
 time: "14h30 - 17h00"
 location: "Chapelle des Capucins"
 summary: "Temps de prière, chapelet médité, enseignement spirituel et Messe en l'honneur de Saint Padre Pio."
-image: "/images/dusenbach-e1740063645556.jpg"
+image: "/images/saint-padre-pio.jpg"
 featured: true
 ---
 
