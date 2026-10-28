@@ -22,14 +22,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <Layout>
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-b from-[#2D1B11] via-[#452718] to-[#5C3826] text-white py-20 sm:py-28 lg:py-32 overflow-hidden">
-    <!-- Atmospheric background image overlay -->
-    <div class="absolute inset-0 opacity-25 mix-blend-overlay pointer-events-none">
+  <section class="relative bg-stone-950 text-white py-20 sm:py-28 lg:py-36 overflow-hidden">
+    <!-- Atmospheric background altar image with Franciscan warm dark overlay -->
+    <div class="absolute inset-0 pointer-events-none">
       <img
-        src={`${base}/images/cropped-Creche-2017.jpg`}
-        alt="Chapelle des Capucins"
-        class="w-full h-full object-cover"
+        src={`${base}/images/chapelle-autel-choeur.jpg`}
+        alt="Chœur et Maître-Autel de la Chapelle des Capucins"
+        class="w-full h-full object-cover object-center scale-105"
       />
+      <!-- Gradient overlay for text contrast while highlighting the sanctuary -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#24130A]/85 via-[#381E10]/75 to-[#1C0F08]/90"></div>
     </div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -40,11 +42,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <!-- Main Headline -->
-      <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-amber-50 tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none">
+      <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-amber-50 tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none drop-shadow-md">
         Une Maison de Prière, de Silence et de Fraternité
       </h1>
 
-      <p class="mt-6 text-base sm:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed font-serif">
+      <p class="mt-6 text-base sm:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed font-serif drop-shadow-sm">
         Depuis plus de 400 ans au cœur de Clermont-Ferrand, les frères capucins vous accueillent chaque jour pour célébrer l'Eucharistie, prier et partager la joie franciscaine.
       </p>
 
