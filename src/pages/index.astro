@@ -17,6 +17,7 @@ const allPosts = await getCollection('posts');
 const recentPosts = allPosts
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
@@ -25,7 +26,7 @@ const recentPosts = allPosts
     <!-- Atmospheric background image overlay -->
     <div class="absolute inset-0 opacity-25 mix-blend-overlay pointer-events-none">
       <img
-        src="/images/cropped-Creche-2017.jpg"
+        src={`${base}/images/cropped-Creche-2017.jpg`}
         alt="Chapelle des Capucins"
         class="w-full h-full object-cover"
       />
@@ -50,14 +51,14 @@ const recentPosts = allPosts
       <!-- Primary Action Buttons -->
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a
-          href="/horaires"
+          href={`${base}/horaires`}
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-amber-500 text-stone-950 font-bold text-base hover:bg-amber-400 shadow-lg shadow-amber-900/30 transition-all active:scale-95"
         >
           <svg class="w-5 h-5 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           Horaires des Messes & Adoration
         </a>
         <a
-          href="/evenements"
+          href={`${base}/evenements`}
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/20 backdrop-blur-md transition-all"
         >
           Agenda & Événements &rarr;
@@ -106,7 +107,7 @@ const recentPosts = allPosts
             Les célébrations solennelles, groupes de prière et activités de la fraternité.
           </p>
         </div>
-        <a href="/evenements" class="inline-flex items-center gap-1 text-sm font-semibold text-[#7B462C] hover:text-[#5C3826] transition group whitespace-nowrap">
+        <a href={`${base}/evenements`} class="inline-flex items-center gap-1 text-sm font-semibold text-[#7B462C] hover:text-[#5C3826] transition group whitespace-nowrap">
           Voir tout l'agenda
           <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
         </a>
@@ -148,10 +149,10 @@ const recentPosts = allPosts
             </p>
           </div>
           <div class="pt-2 flex flex-wrap gap-4">
-            <a href="/fraternite" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#7B462C] text-white font-semibold text-sm hover:bg-[#5C3826] transition shadow-xs">
+            <a href={`${base}/fraternite`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#7B462C] text-white font-semibold text-sm hover:bg-[#5C3826] transition shadow-xs">
               Découvrir la Fraternité & son Histoire &rarr;
             </a>
-            <a href="/padre-pio" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-stone-800 font-semibold text-sm hover:bg-stone-50 border border-stone-300 transition">
+            <a href={`${base}/padre-pio`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-stone-800 font-semibold text-sm hover:bg-stone-50 border border-stone-300 transition">
               Groupe Padre Pio
             </a>
           </div>
@@ -160,18 +161,18 @@ const recentPosts = allPosts
         <div class="lg:col-span-5 grid grid-cols-2 gap-4">
           <div class="space-y-4">
             <div class="rounded-2xl overflow-hidden shadow-md h-44 bg-stone-200">
-              <img src="/images/cropped-Ensemble-FILEminimizer.jpg" alt="Chapelle des Capucins" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/cropped-Ensemble-FILEminimizer.jpg`} alt="Chapelle des Capucins" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="rounded-2xl overflow-hidden shadow-md h-56 bg-stone-200">
-              <img src="/images/cropped-P1010588-scaled-1.jpg" alt="Intérieur de la Chapelle" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/cropped-P1010588-scaled-1.jpg`} alt="Intérieur de la Chapelle" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
           <div class="space-y-4 pt-6">
             <div class="rounded-2xl overflow-hidden shadow-md h-56 bg-stone-200">
-              <img src="/images/dusenbach-e1740063645556.jpg" alt="Prière et recueillement" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/dusenbach-e1740063645556.jpg`} alt="Prière et recueillement" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="rounded-2xl overflow-hidden shadow-md h-44 bg-stone-200">
-              <img src="/images/cropped-Creche-2017.jpg" alt="Crèche des Capucins" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/cropped-Creche-2017.jpg`} alt="Crèche des Capucins" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
@@ -193,7 +194,7 @@ const recentPosts = allPosts
             Partages spirituels, nouvelles de la paroisse et chroniques des frères.
           </p>
         </div>
-        <a href="/actualites" class="inline-flex items-center gap-1 text-sm font-semibold text-[#7B462C] hover:text-[#5C3826] transition group whitespace-nowrap">
+        <a href={`${base}/actualites`} class="inline-flex items-center gap-1 text-sm font-semibold text-[#7B462C] hover:text-[#5C3826] transition group whitespace-nowrap">
           Toutes les actualités
           <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
         </a>

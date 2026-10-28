@@ -1,5 +1,6 @@
 ---
 import schedules from '../data/schedules.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="bg-gradient-to-br from-[#452718] to-[#2D1B11] text-[#FAF7F2] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-amber-900/40 relative overflow-hidden">
@@ -19,7 +20,7 @@ import schedules from '../data/schedules.json';
           La chapelle est ouverte chaque jour de 8h00 à 20h30 pour le recueillement personnel et la prière.
         </p>
       </div>
-      <a href="/horaires" class="inline-flex items-center gap-1 text-sm font-semibold text-amber-300 hover:text-white transition group whitespace-nowrap">
+      <a href={`${base}/horaires`} class="inline-flex items-center gap-1 text-sm font-semibold text-amber-300 hover:text-white transition group whitespace-nowrap">
         Consulter tous les horaires détaillés
         <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
       </a>

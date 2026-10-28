@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import schedules from '../data/schedules.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -149,7 +150,7 @@ import schedules from '../data/schedules.json';
 
     <!-- Notice for holidays -->
     <div class="p-5 rounded-2xl bg-stone-100 border border-stone-200 text-center text-xs text-stone-600">
-      <p>💡 En période de vacances scolaires ou lors des grandes fêtes liturgiques (Noël, Semaine Sainte, Pâques), des horaires particuliers peuvent s'appliquer. Consultez l'onglet <a href="/evenements" class="text-[#7B462C] font-bold underline">Événements</a> ou appelez au <a href="tel:0473926638" class="text-[#7B462C] font-bold underline">04 73 92 66 38</a>.</p>
+      <p>💡 En période de vacances scolaires ou lors des grandes fêtes liturgiques (Noël, Semaine Sainte, Pâques), des horaires particuliers peuvent s'appliquer. Consultez l'onglet <a href={`${base}/evenements`} class="text-[#7B462C] font-bold underline">Événements</a> ou appelez au <a href="tel:0473926638" class="text-[#7B462C] font-bold underline">04 73 92 66 38</a>.</p>
     </div>
 
   </div>

@@ -19,6 +19,8 @@ const eventDate = new Date(event.data.date).toLocaleDateString('fr-FR', {
   month: 'long',
   day: 'numeric',
 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const imageUrl = event.data.image ? (event.data.image.startsWith('http') || event.data.image.startsWith(base) ? event.data.image : `${base}${event.data.image}`) : undefined;
 ---
 
 <Layout
@@ -31,7 +33,7 @@ const eventDate = new Date(event.data.date).toLocaleDateString('fr-FR', {
       
       <!-- Back Link -->
       <div>
-        <a href="/evenements" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7B462C] hover:underline">
+        <a href={`${base}/evenements`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7B462C] hover:underline">
           &larr; Retour à tous les événements
         </a>
       </div>
@@ -67,7 +69,7 @@ const eventDate = new Date(event.data.date).toLocaleDateString('fr-FR', {
       {event.data.image && (
         <div class="rounded-3xl overflow-hidden shadow-lg border border-stone-200 max-h-[500px] w-full bg-stone-100">
           <img
-            src={event.data.image}
+            src={imageUrl}
             alt={event.data.title}
             class="w-full h-full object-cover"
           />
@@ -85,7 +87,7 @@ const eventDate = new Date(event.data.date).toLocaleDateString('fr-FR', {
           <p class="font-bold text-[#3A2216]">Une question sur cet événement ?</p>
           <p class="text-stone-600">Contactez la fraternité des Capucins au 04 73 92 66 38 ou par email.</p>
         </div>
-        <a href="/contact" class="px-5 py-2.5 rounded-xl bg-[#7B462C] text-white font-semibold text-xs sm:text-sm hover:bg-[#5C3826] transition whitespace-nowrap">
+        <a href={`${base}/contact`} class="px-5 py-2.5 rounded-xl bg-[#7B462C] text-white font-semibold text-xs sm:text-sm hover:bg-[#5C3826] transition whitespace-nowrap">
           Contacter la Fraternité
         </a>
       </div>

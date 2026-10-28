@@ -7,6 +7,7 @@ const allEvents = await getCollection('events');
 const sortedEvents = allEvents.sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
 );
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -47,7 +48,7 @@ const sortedEvents = allEvents.sort(
       <div class="text-center py-16 bg-white rounded-3xl border border-stone-200 p-8">
         <p class="text-lg text-stone-600 font-serif">Aucun événement à venir pour le moment.</p>
         <p class="text-sm text-stone-400 mt-2">Revenez bientôt ou consultez les horaires habituels des offices.</p>
-        <a href="/horaires" class="inline-block mt-4 text-[#7B462C] font-semibold underline">
+        <a href={`${base}/horaires`} class="inline-block mt-4 text-[#7B462C] font-semibold underline">
           Voir les horaires réguliers &rarr;
         </a>
       </div>
