@@ -1,30 +1,22 @@
 # Local Development & Agent Rules for `capucins-clermont`
 
-## 🚀 Automatic Local Server Management
+## 🛠️ Local Server Management (On-Demand Only)
 
-Always ensure the local development server is active with hot-reloading/auto-reloading enabled:
+**Do NOT automatically start the local dev server.** Only launch or stop the server when the user explicitly asks for it (e.g. "start the server", "run dev", "launch localhost", "stop server").
 
-1. **Port Verification**:
-   - At the beginning of interactive sessions or when relevant to the user's request, check if the project's port (**4321**) is listening:
-     ```powershell
-     Get-NetTCPConnection -LocalPort 4321 -ErrorAction SilentlyContinue
-     ```
-
-2. **Automatic Background Startup**:
-   - If inactive, automatically launch the dev server in the background as a silent daemon with hot-reload enabled:
+1. **Launch On User Request**:
+   - When the user asks to start/run the server:
      - Command: `npm run dev`
      - Daemon flag: `IsDaemon: true`
      - Wait time: `WaitMsBeforeAsync: 5000` (allowing Vite/Astro to bind the port before backgrounding).
-
-3. **Direct Clickable URL**:
-   - Always present the direct clickable link to the user so they never need to remember or type the port:
+   - Provide direct clickable links:
      - 🌐 **[http://localhost:4321/capucins-clermont/](http://localhost:4321/capucins-clermont/)** (Direct application URL)
      - ⚙️ **[http://localhost:4321/capucins-clermont/admin/](http://localhost:4321/capucins-clermont/admin/)** (Content Management Dashboard)
 
-4. **Clean Server Shutdown**:
+2. **Shutdown On User Request**:
    - When the user asks to "stop", "kill", or "shut down" the server:
      - Terminate the background task via the `manage_task` tool (`Action: 'kill'`).
-     - Or stop processes listening on port 4321:
+     - Stop any processes listening on port 4321:
        ```powershell
        Get-NetTCPConnection -LocalPort 4321 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
        ```
@@ -32,7 +24,7 @@ Always ensure the local development server is active with hot-reloading/auto-rel
 
 ---
 
-## 🛠️ Project Guidelines & Architecture
+## 🏛️ Project Guidelines & Architecture
 
 - **Engine**: Astro 5 with `@tailwindcss/vite` (Tailwind CSS v4).
 - **Base Path**: `/capucins-clermont` (configured in `astro.config.mjs` for GitHub Pages).
