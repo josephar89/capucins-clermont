@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lancement Officiel — Frères Mineurs Capucins de Clermont-Ferrand</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Google Fonts for majestic, dignified typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-light: #fef3c7;
+            --gold-main: #f59e0b;
+            --gold-glow: #d97706;
+            --tau-brown: #5c3826;
+            --bg-dark: #0a0604;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            background: radial-gradient(ellipse at 50% 40%, #1c0e07 0%, #0d0705 60%, #050302 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Lora', Georgia, serif;
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Particle Canvas Background */
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        /* Subtle vignette & ray overlay */
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.75) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Control Bar (Top Right) */
+        .controls-top {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: rgba(40, 22, 14, 0.65);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #fef3c7;
+            padding: 8px 14px;
+            border-radius: 9999px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .control-btn:hover {
+            background: rgba(92, 56, 38, 0.85);
+            border-color: rgba(245, 158, 11, 0.75);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Quick Navigation Bar (Bottom Right) */
+        .controls-bottom {
+            position: absolute;
+            bottom: 24px;
+            right: 28px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-link {
+            background: rgba(20, 10, 6, 0.7);
+            border: 1px solid rgba(254, 243, 199, 0.2);
+            color: #e5e7eb;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-link:hover {
+            border-color: var(--gold-main);
+            color: var(--gold-light);
+        }
+
+        /* Progress Steps (Bottom Left) */
+        .timeline-indicator {
+            position: absolute;
+            bottom: 24px;
+            left: 28px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 0.75rem;
+            color: #a8a29e;
+        }
+
+        .timeline-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-dot.active {
+            background: var(--gold-main);
+            box-shadow: 0 0 10px var(--gold-main);
+            transform: scale(1.3);
+        }
+
+        /* Scene Container */
+        .scene {
+            position: absolute;
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+            width: 90%;
+            max-width: 920px;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Franciscan Tau Cross icon */
+        .tau-symbol {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.6));
+            animation: pulseGlow 3s infinite alternate ease-in-out;
+        }
+
+        /* Scene 1: Franciscan Identity & Motto (0s - 6s) */
+        .scene-1 {
+            animation: textSequence 6s ease-in-out forwards;
+        }
+
+        /* Scene 2: The Relaunch Announcement (6s - 16s) */
+        .scene-2 {
+            animation: textSequenceLong 10s ease-in-out forwards;
+            animation-delay: 6s;
+        }
+
+        /* Scene 3: The Mission & Welcome (16s - 25s) */
+        .scene-3 {
+            animation: textSequenceLong 9s ease-in-out forwards;
+            animation-delay: 16s;
+        }
+
+        /* Typography */
+        .pretitle {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-main);
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .title {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 18px;
+            line-height: 1.25;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .motto {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            font-style: italic;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+        }
+
+        .launch-text {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: var(--gold-main);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 22px;
+            line-height: 1.3;
+            text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+        }
+
+        .paragraph {
+            font-size: 1.45rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #f3f4f6;
+            max-width: 840px;
+            margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        .paragraph-en {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #d1d5db;
+            margin-top: 14px;
+            letter-spacing: 0.5px;
+            font-style: italic;
+        }
+
+        /* Monastery Highlight Block */
+        .highlight-block {
+            display: block;
+            margin-top: 24px;
+            font-family: 'Cinzel', Georgia, serif;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.5;
+            font-size: 1.5rem;
+            border-top: 1px solid rgba(245, 158, 11, 0.3);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 14px 20px;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .highlight-block .subtext {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #fcd34d;
+            text-transform: none;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* Countdown Number Styling */
+        .countdown {
+            position: absolute;
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 11rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 35px #f59e0b, 0 0 70px #d97706, 0 0 120px #b45309;
+            z-index: 20;
+            opacity: 0;
+            transform: scale(0.5);
+            pointer-events: none;
+        }
+
+        .countdown.pulse {
+            animation: popCount 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        /* Countdown Label */
+        .countdown-label {
+            position: absolute;
+            top: 22%;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-main);
+            opacity: 0;
+            z-index: 20;
+            transition: opacity 0.5s ease;
+        }
+
+        .countdown-label.active {
+            opacity: 1;
+        }
+
+        /* Assembly Container: Franciscan Cross + Acronym / Words */
+        .assembly-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            z-index: 30;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .assembly-container.active {
+            opacity: 1;
+        }
+
+        .assembly-tau {
+            width: 140px;
+            height: 140px;
+            filter: drop-shadow(0 0 35px #f59e0b) drop-shadow(0 0 75px #d97706);
+            opacity: 0;
+        }
+
+        .assembly-container.active .assembly-tau {
+            animation: flyFromTop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .assembly-words {
+            display: flex;
+            gap: 20px;
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 0 0 35px #f59e0b, 0 0 70px #d97706;
+            color: #ffffff;
+        }
+
+        .word {
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .assembly-container.active .word-left {
+            animation: flyFromLeft 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .assembly-container.active .word-center {
+            animation: flyFromBottom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .assembly-container.active .word-right {
+            animation: flyFromRight 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .sub-reveal {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            opacity: 0;
+            margin-top: 10px;
+        }
+
+        .assembly-container.active .sub-reveal {
+            animation: fadeInSub 1.4s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        /* Converge and Zoom Animation */
+        .assembly-container.converged {
+            animation: mergeAndZoom 1.5s ease-in forwards;
+        }
+
+        /* Light Burst Effect */
+        .light-source {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 60px 25px #ffffff, 0 0 120px 60px #f59e0b, 0 0 200px 100px #d97706;
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 40;
+            pointer-events: none;
+        }
+
+        .light-source.active {
+            animation: dramaticIgnite 2.4s ease-in forwards;
+        }
+
+        /* KEYFRAME ANIMATIONS */
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5)); }
+            100% { transform: scale(1.06); filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.9)); }
+        }
+
+        @keyframes textSequence {
+            0% { opacity: 0; transform: translateY(22px); }
+            14% { opacity: 1; transform: translateY(0); }
+            86% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-22px); }
+        }
+
+        @keyframes textSequenceLong {
+            0% { opacity: 0; transform: translateY(22px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-22px); }
+        }
+
+        @keyframes popCount {
+            0% { opacity: 0; transform: scale(0.4); }
+            20% { opacity: 1; transform: scale(1.12); }
+            75% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.35); }
+        }
+
+        @keyframes flyFromTop {
+            0% { opacity: 0; transform: translateY(-80vh) scale(2); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes flyFromLeft {
+            0% { opacity: 0; transform: translateX(-80vw) scale(2); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        @keyframes flyFromRight {
+            0% { opacity: 0; transform: translateX(80vw) scale(2); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        @keyframes flyFromBottom {
+            0% { opacity: 0; transform: translateY(80vh) scale(2); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes fadeInSub {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes mergeAndZoom {
+            0% { transform: scale(1); filter: brightness(1); }
+            45% { transform: scale(1.25); filter: brightness(2); }
+            100% { transform: scale(8); opacity: 0; filter: brightness(5); }
+        }
+
+        @keyframes dramaticIgnite {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+            25% { transform: translate(-50%, -50%) scale(2.5); opacity: 0.9; }
+            55% { transform: translate(-50%, -50%) scale(35); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(500); opacity: 1; }
+        }
+
+        /* Responsive styling for smaller displays/phones */
+        @media (max-width: 768px) {
+            .title { font-size: 1.9rem; }
+            .motto { font-size: 1.35rem; }
+            .launch-text { font-size: 1.6rem; }
+            .paragraph { font-size: 1.15rem; }
+            .highlight-block { font-size: 1.2rem; }
+            .countdown { font-size: 7rem; }
+            .assembly-words { font-size: 2rem; gap: 10px; }
+            .assembly-tau { width: 90px; height: 90px; }
+            .controls-top { top: 12px; right: 12px; }
+            .controls-bottom { bottom: 12px; right: 12px; }
+            .timeline-indicator { bottom: 12px; left: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Floating Particles Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Atmospheric Vignette -->
+    <div class="vignette"></div>
+
+    <!-- Top Action Toolbar -->
+    <div class="controls-top">
+        <button id="soundBtn" class="control-btn" title="Activer / Désactiver les cloches et carillons">
+            <span id="soundIcon">🔔</span>
+            <span id="soundText">Son : Activé</span>
+        </button>
+        <button id="fullscreenBtn" class="control-btn" title="Basculer en plein écran pour la projection">
+            <span>⛶</span>
+            <span>Plein Écran</span>
+        </button>
+    </div>
+
+    <!-- Timeline Progress Dots -->
+    <div class="timeline-indicator">
+        <span class="timeline-dot active" id="dot1"></span>
+        <span class="timeline-dot" id="dot2"></span>
+        <span class="timeline-dot" id="dot3"></span>
+        <span class="timeline-dot" id="dot4"></span>
+        <span id="timelineLabel" style="margin-left: 6px;">Introduction</span>
+    </div>
+
+    <!-- Bottom Quick Launch Shortcuts -->
+    <div class="controls-bottom">
+        <button id="skipToCountdownBtn" class="action-link" title="Passer directement au compte à rebours">
+            Compte à rebours ⏭
+        </button>
+        <button id="launchNowBtn" class="action-link" title="Ouvrir le site immédiatement">
+            Accéder au site ➔
+        </button>
+    </div>
+
+    <!-- ================= SCENE 1 : Devise & Fraternité (0s - 6s) ================= -->
+    <div class="scene scene-1" id="scene1">
+        <!-- Franciscan Tau Cross SVG -->
+        <svg class="tau-symbol" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="7" fill="#5C3826" stroke="#c68a4c" stroke-width="1.2"/>
+            <path d="M6 10H26M16 10V25M11 10C11 8 13 7.5 16 7.5S21 8 21 10" stroke="#FDE68A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="pretitle">Ordre des Frères Mineurs Capucins</div>
+        <div class="title">Fraternité de Clermont-Ferrand</div>
+        <div class="motto">« Pax et Bonum — Paix et Bien »</div>
+    </div>
+
+    <!-- ================= SCENE 2 : Annonce Officielle (6s - 16s) ================= -->
+    <div class="scene scene-2" id="scene2">
+        <div class="launch-text">Relaunch of the Official Website</div>
+        <div class="paragraph">
+            Les Frères Mineurs Capucins de Clermont-Ferrand sont heureux et fiers de vous annoncer la réouverture et le lancement officiel de leur site internet.
+            <div class="paragraph-en">
+                "The Capuchin Friars of Clermont-Ferrand proudly present the relaunch of our official website."
+            </div>
+            <div class="highlight-block">
+                Une Maison de Prière, de Silence et de Fraternité
+                <span class="subtext">Au cœur de Clermont-Ferrand, face au Jardin Lecoq</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SCENE 3 : Message Fraternel & Invitation (16s - 25s) ================= -->
+    <div class="scene scene-3" id="scene3">
+        <div class="pretitle" style="letter-spacing: 3px;">Une Nouvelle Fenêtre Fraternelle</div>
+        <div class="paragraph" style="font-size: 1.55rem; line-height: 1.8;">
+            Ce nouveau portail digital ouvre grand les portes de notre chapelle : retrouvez en ligne les horaires d'offices et de messes quotidiennes, les confessions, l'adoration, les enseignements spirituels et la vie de notre communauté sous le patronage de <strong>Saint François d'Assise</strong> et de <strong>Saint Padre Pio</strong>.
+        </div>
+        <div style="margin-top: 25px; color: var(--gold-light); font-style: italic; font-size: 1.25rem;">
+            « Que le Seigneur te bénisse et te garde, qu'Il fasse briller sur toi son visage. »
+        </div>
+    </div>
+
+    <!-- Countdown Title -->
+    <div class="countdown-label" id="countdownLabel">Lancement Officiel dans</div>
+
+    <!-- The Countdown Number -->
+    <div class="countdown" id="countdownText">10</div>
+
+    <!-- The Assembly Climax Container -->
+    <div class="assembly-container" id="assemblyContainer">
+        <!-- Glorious Tau Cross -->
+        <svg class="assembly-tau" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#3a2216" stroke="#f59e0b" stroke-width="1.5"/>
+            <path d="M6 10H26M16 10V25M11 10C11 8 13 7.5 16 7.5S21 8 21 10" stroke="#fef3c7" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="assembly-words">
+            <span class="word word-left">PAX</span>
+            <span class="word word-center">ET</span>
+            <span class="word word-right">BONUM</span>
+        </div>
+        
+        <div class="sub-reveal">Capucins-Clermont.fr est en ligne !</div>
+    </div>
+    
+    <!-- The Light Flare Explosion -->
+    <div class="light-source" id="lightSource"></div>
+
+    <script>
+        // Target destination website
+        const TARGET_URL = (window.location.protocol === 'file:') 
+            ? "https://capucins-clermont.fr" 
+            : "/";
+
+        const countdownEl = document.getElementById('countdownText');
+        const countdownLabel = document.getElementById('countdownLabel');
+        const assemblyContainer = document.getElementById('assemblyContainer');
+        const lightSource = document.getElementById('lightSource');
+        const timelineLabel = document.getElementById('timelineLabel');
+        const dot1 = document.getElementById('dot1');
+        const dot2 = document.getElementById('dot2');
+        const dot3 = document.getElementById('dot3');
+        const dot4 = document.getElementById('dot4');
+
+        const scene1 = document.getElementById('scene1');
+        const scene2 = document.getElementById('scene2');
+        const scene3 = document.getElementById('scene3');
+
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        // Web Audio Synthesizer: Resonant Church Bell / Tibetan Singing Bowl Chime
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playBellChime(freq = 261.63, duration = 3.5, intensity = 0.4) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+
+                const now = ctx.currentTime;
+                // Harmonic overtone ratios typical of church bells
+                const partials = [
+                    { ratio: 1.0,  gain: 0.8 },
+                    { ratio: 1.5,  gain: 0.5 },
+                    { ratio: 2.0,  gain: 0.35 },
+                    { ratio: 2.76, gain: 0.2 },
+                    { ratio: 4.07, gain: 0.12 }
+                ];
+
+                partials.forEach(p => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq * p.ratio, now);
+
+                    gain.gain.setValueAtTime(intensity * p.gain, now);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.start(now);
+                    osc.stop(now + duration);
+                });
+            } catch (e) {
+                console.log("Audio not allowed yet:", e);
+            }
+        }
+
+        // Countdown tick chime
+        function playTick() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } catch (e) {}
+        }
+
+        // Grand solemn bell for launch climax
+        function playGrandCelebrationChord() {
+            if (!soundEnabled) return;
+            // Play a majestic cathedral chord (F, A, C, E)
+            setTimeout(() => playBellChime(174.61, 5.0, 0.6), 0);   // F3
+            setTimeout(() => playBellChime(220.00, 4.5, 0.45), 80); // A3
+            setTimeout(() => playBellChime(261.63, 4.0, 0.45), 160); // C4
+            setTimeout(() => playBellChime(349.23, 4.5, 0.35), 240); // F4
+            setTimeout(() => playBellChime(523.25, 5.0, 0.3), 320); // C5
+        }
+
+        // Floating Dust / Starlight Particle Canvas
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.2 + 0.6;
+                this.speedY = -(Math.random() * 0.4 + 0.15);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.7 + 0.2;
+                this.fadeSpeed = Math.random() * 0.008 + 0.003;
+                this.hue = Math.random() > 0.3 ? 38 : 45; // Golden amber palette
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.opacity -= this.fadeSpeed;
+                if (this.opacity <= 0 || this.y < -10) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 90%, 65%, ${this.opacity})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = `hsla(${this.hue}, 90%, 55%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 70; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Timeline Step Manager
+        setTimeout(() => {
+            dot1.classList.remove('active');
+            dot2.classList.add('active');
+            timelineLabel.innerText = "Annonce Officielle";
+        }, 6000);
+
+        setTimeout(() => {
+            dot2.classList.remove('active');
+            dot3.classList.add('active');
+            timelineLabel.innerText = "Message Fraternel";
+        }, 16000);
+
+        // Countdown State
+        let count = 10;
+        let countdownTimer = null;
+        let countdownStarted = false;
+
+        function startCountdown() {
+            if (countdownStarted) return;
+            countdownStarted = true;
+
+            // Hide previous scenes cleanly
+            scene1.style.display = 'none';
+            scene2.style.display = 'none';
+            scene3.style.display = 'none';
+
+            dot1.classList.remove('active');
+            dot2.classList.remove('active');
+            dot3.classList.remove('active');
+            dot4.classList.add('active');
+            timelineLabel.innerText = "Compte à Rebours";
+
+            countdownLabel.classList.add('active');
+
+            const interval = setInterval(() => {
+                countdownEl.innerText = count;
+                
+                countdownEl.classList.remove('pulse');
+                void countdownEl.offsetWidth; // Force CSS reflow
+                countdownEl.classList.add('pulse');
+
+                if (count > 0) {
+                    playTick();
+                }
+
+                count--;
+
+                if (count < 0) {
+                    clearInterval(interval);
+                    
+                    // Hide countdown number & label
+                    countdownEl.style.display = 'none';
+                    countdownLabel.style.display = 'none';
+                    timelineLabel.innerText = "Bienvenue !";
+
+                    // Play Grand Solemn Bell Chimes
+                    playGrandCelebrationChord();
+
+                    // Trigger letters & Tau flying in from 4 directions
+                    assemblyContainer.classList.add('active');
+
+                    // After elements arrive (1.2s), converge them together with light flare
+                    setTimeout(() => {
+                        assemblyContainer.classList.add('converged');
+                        lightSource.classList.add('active');
+                    }, 1300);
+
+                    // Redirect to the main website
+                    setTimeout(() => {
+                        window.location.href = TARGET_URL;
+                    }, 3200); 
+                }
+            }, 1000);
+        }
+
+        // Natural sequence start after Scene 1 (6s) + Scene 2 (10s) + Scene 3 (9s) = 25s
+        const autoCountdownTimer = setTimeout(() => {
+            startCountdown();
+        }, 25000);
+
+        // Control: Skip to countdown immediately
+        document.getElementById('skipToCountdownBtn').addEventListener('click', () => {
+            clearTimeout(autoCountdownTimer);
+            startCountdown();
+        });
+
+        // Control: Launch Now directly
+        document.getElementById('launchNowBtn').addEventListener('click', () => {
+            playGrandCelebrationChord();
+            window.location.href = TARGET_URL;
+        });
+
+        // Control: Fullscreen Toggle
+        document.getElementById('fullscreenBtn').addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        // Control: Sound Toggle
+        const soundBtn = document.getElementById('soundBtn');
+        const soundIcon = document.getElementById('soundIcon');
+        const soundText = document.getElementById('soundText');
+
+        soundBtn.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+                getAudioContext();
+                soundIcon.innerText = "🔔";
+                soundText.innerText = "Son : Activé";
+                playBellChime(440, 1.5, 0.3); // test gentle chime
+            } else {
+                soundIcon.innerText = "🔕";
+                soundText.innerText = "Son : Coupé";
+            }
+        });
+
+        // User first interaction enables audio context (browser autoplay policy)
+        window.addEventListener('click', () => {
+            getAudioContext();
+        }, { once: true });
+    </script>
+</body>
+</html>
