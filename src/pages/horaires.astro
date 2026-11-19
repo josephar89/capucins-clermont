@@ -52,8 +52,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <!-- Highlight Image of the Choir and Altar -->
       <div class="rounded-2xl overflow-hidden shadow-md max-h-80 relative group">
         <img
-          src={`${base}/images/chapelle-choeur-messe.jpg`}
+          src={`${base}/images/chapelle-choeur-messe.webp`}
           alt="Célébration eucharistique au chœur de la chapelle des Capucins"
+          loading="lazy"
+          decoding="async"
+          width="640"
+          height="480"
           class="w-full h-80 object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-5">
@@ -145,8 +149,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
         <div class="md:col-span-5 rounded-2xl overflow-hidden shadow-md h-72">
           <img
-            src={`${base}/images/freres-priere-adoration.jpg`}
+            src={`${base}/images/freres-priere-adoration.webp`}
             alt="Frères capucins en prière et adoration à la chapelle"
+            loading="lazy"
+            decoding="async"
+            width="1024"
+            height="768"
             class="w-full h-full object-cover"
           />
         </div>

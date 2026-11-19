@@ -3,7 +3,7 @@ title: "Profession solennelle de frère Marie-Geoffroy"
 date: "2024-11-22"
 author: "Frères Capucins"
 summary: "Frère Marie-Geoffroy a fait sa profession solennelle dans l'Ordre des Frères Mineurs Capucins, entre les mains de frère Daniel Painblanc, à la chapelle du couvent de Clermont-Ferrand."
-image: "/images/chapelle-choeur-messe.jpg"
+image: "/images/chapelle-choeur-messe.webp"
 tags: ["Vie de la Fraternité", "Fêtes"]
 ---
 

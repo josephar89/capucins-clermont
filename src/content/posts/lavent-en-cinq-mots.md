@@ -3,7 +3,7 @@ title: "L&rsquo;Avent en cinq mots"
 date: "2014-11-28"
 author: "Frères Capucins"
 summary: "**Le temps de l’AVENT**  Cette année pour nous approcher du temps liturgique de l’Avent, j’ai pensé jouer un peu avec les mots en choisissant cinq mots qui commencent par les initi..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

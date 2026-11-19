@@ -10,7 +10,7 @@ interface Props {
 const {
   title = "Frères Capucins de Clermont-Ferrand | Chapelle & Fraternité",
   description = "Site officiel de la fraternité des Frères Mineurs Capucins à Clermont-Ferrand (63000). Horaires des messes, confessions, adoration eucharistique, groupe Padre Pio et actualités.",
-  image = "/images/chapelle-autel-choeur.jpg"
+  image = "/images/chapelle-autel-choeur.webp"
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -26,6 +26,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    {currentPath === '/' && (
+      <link rel="preload" as="image" href={`${base}/images/chapelle-autel-choeur.webp`} type="image/webp" fetchpriority="high" />
+    )}
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
@@ -44,8 +48,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .font-serif { font-family: 'Lora', Georgia, serif; }
       .font-sans { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     </style>
-    <!-- Netlify Identity Widget for invite redirection -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity Widget for invite redirection (deferred to not block rendering) -->
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="min-h-full flex flex-col font-sans text-stone-800 bg-[#FAF7F2] antialiased selection:bg-amber-200 selection:text-amber-900">
     <!-- Top notification banner for essential hours & quick call -->

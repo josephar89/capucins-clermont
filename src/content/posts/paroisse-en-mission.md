@@ -3,7 +3,7 @@ title: "Paroisse en mission"
 date: "2014-05-15"
 author: "Frères Capucins"
 summary: "Les 7, 8 et 9 juin, des frères Capucins participent à **[Paroisse en mission](http://www.paroissesaintromain-cl.cef.fr/bienvenue/)**, sur le territoire de la paroisse Saint-Romain ..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

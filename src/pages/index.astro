@@ -26,9 +26,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <!-- Atmospheric background altar image with directional lighting -->
     <div class="absolute inset-0 pointer-events-none">
       <img
-        src={`${base}/images/chapelle-autel-choeur.jpg`}
+        src={`${base}/images/chapelle-autel-choeur.webp`}
         alt="Chœur et Maître-Autel de la Chapelle des Capucins"
         class="w-full h-full object-cover object-[center_20%] scale-100"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="1024"
+        height="681"
       />
       <!-- Top subtle vignette for header contrast -->
       <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
@@ -166,18 +171,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="lg:col-span-5 grid grid-cols-2 gap-4">
           <div class="space-y-4">
             <div class="rounded-2xl overflow-hidden shadow-md h-48 bg-stone-200">
-              <img src={`${base}/images/portrait-frere-capucin.jpg`} alt="Frère capucin" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/portrait-frere-capucin.webp`} alt="Frère capucin" loading="lazy" decoding="async" width="1024" height="682" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="rounded-2xl overflow-hidden shadow-md h-52 bg-stone-200">
-              <img src={`${base}/images/freres-priere-adoration.jpg`} alt="Prière et adoration à la chapelle" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/freres-priere-adoration.webp`} alt="Prière et adoration à la chapelle" loading="lazy" decoding="async" width="1024" height="768" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
           <div class="space-y-4 pt-6">
             <div class="rounded-2xl overflow-hidden shadow-md h-52 bg-stone-200">
-              <img src={`${base}/images/fraternite-repas-communaute.jpg`} alt="Vie fraternelle et repas partagé" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/fraternite-repas-communaute.webp`} alt="Vie fraternelle et repas partagé" loading="lazy" decoding="async" width="1024" height="768" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="rounded-2xl overflow-hidden shadow-md h-48 bg-stone-200">
-              <img src={`${base}/images/frere-dialogue-jeunes.jpg`} alt="Échange avec les jeunes au jardin" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}/images/frere-dialogue-jeunes.webp`} alt="Échange avec les jeunes au jardin" loading="lazy" decoding="async" width="1024" height="640" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>

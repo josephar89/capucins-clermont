@@ -4,7 +4,7 @@ date: "2026-12-01"
 time: "Tous les jours 8h00 - 20h30"
 location: "Chapelle des Capucins, 9 Bd Lafayette"
 summary: "Venez contempler la célèbre crèche des Capucins, une tradition clermontoise appréciée des familles depuis plus d'un siècle."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 featured: false
 ---
 

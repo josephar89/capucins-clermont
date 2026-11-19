@@ -3,7 +3,7 @@ title: "Jubilé de la Miséricorde : art et prière"
 date: "2015-04-11"
 author: "Frères Capucins"
 summary: "**Jubilé extraordinaire de la miséricorde : du 8 décembre 2015 au 20 novembre 2016**  Lire :**[ « Le visage de la miséricorde »](http://http://w2.vatican.va/content/francesco/fr/ap..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

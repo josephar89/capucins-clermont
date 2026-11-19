@@ -3,7 +3,7 @@ title: "Vivre autrement que chacun de son côté ?"
 date: "2015-02-06"
 author: "Frères Capucins"
 summary: "« Et si on vivait autrement que chacun de son côté? » :  un thème qui a rassemblé de très nombreux auditeurs.   par Dominique Amatulli, La Montagne, 6 février 2015.  À l’invitation..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

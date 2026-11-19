@@ -3,7 +3,7 @@ title: "Réflexions sur la pauvreté par frère Éric Bidot"
 date: "2024-12-27"
 author: "Frère Éric Bidot"
 summary: "À l’occasion de la profession solennelle de frère Marie-Geoffroy à Clermont-Ferrand, les jeunes ont reçu l’enseignement inspirant de frère Éric Bidot sur la pauvreté évangélique et la joie franciscaine."
-image: "/images/frere-dialogue-jeunes.jpg"
+image: "/images/frere-dialogue-jeunes.webp"
 tags: ["Méditations", "Jeunesse", "Saint François"]
 ---
 

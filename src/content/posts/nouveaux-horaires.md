@@ -3,7 +3,7 @@ title: "Nouveaux horaires !"
 date: "2026-09-15"
 author: "Frères Capucins"
 summary: "**Messe du dimanche et Adoration du Saint Sacrement 2026**  **Hors vacances scolaires : le mardi de 20h à 21h** (chants par la Scola Capucinorum &#8211; Etudiants et jeunes profess..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

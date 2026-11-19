@@ -3,7 +3,7 @@ title: "Prier pour la vie !"
 date: "2014-01-31"
 author: "Frères Capucins"
 summary: "Entre **le dimanche 2 et le samedi 8 février**,  *trois occasions nous sont offertes de porter avec insistance*  l&rsquo;intention de prière pour la vie.   **Dimanche 2 février,** ..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

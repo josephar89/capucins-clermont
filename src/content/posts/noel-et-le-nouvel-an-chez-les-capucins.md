@@ -3,7 +3,7 @@ title: "Noël et le Nouvel An chez les Capucins"
 date: "2014-12-09"
 author: "Frères Capucins"
 summary: "**Les fêtes de Noël avec les frères Capucins **  Les frères vous souhaitent de joyeuses fête de Noël :  que l&rsquo;Enfant de Bethléem vous apportent la paix et la joie, dons de Di..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 

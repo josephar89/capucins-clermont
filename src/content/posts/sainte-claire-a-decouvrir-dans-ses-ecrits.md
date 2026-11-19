@@ -3,7 +3,7 @@ title: "Sainte Claire à découvrir par ses écrits &#8230;"
 date: "2013-10-23"
 author: "Frères Capucins"
 summary: "**[](http://capucins-clermont.org/wp-content/uploads/2013/10/BénédictionSteClaire.jpg)Mercredi 13 novembre**, à 20h30, au Centre Diocésain de Pastorale : conférence, l’occasion d..."
-image: "/images/cropped-Creche-2017.jpg"
+image: "/images/cropped-Creche-2017.webp"
 tags: ["Actualités"]
 ---
 
