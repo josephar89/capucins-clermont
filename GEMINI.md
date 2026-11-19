@@ -10,8 +10,8 @@
      - Daemon flag: `IsDaemon: true`
      - Wait time: `WaitMsBeforeAsync: 5000` (allowing Vite/Astro to bind the port before backgrounding).
    - Provide direct clickable links:
-     - 🌐 **[http://localhost:4321/capucins-clermont/](http://localhost:4321/capucins-clermont/)** (Direct application URL)
-     - ⚙️ **[http://localhost:4321/capucins-clermont/admin/](http://localhost:4321/capucins-clermont/admin/)** (Content Management Dashboard)
+     - 🌐 **[http://localhost:4321/](http://localhost:4321/)** (Direct application URL)
+     - ⚙️ **[http://localhost:4321/admin/](http://localhost:4321/admin/)** (Content Management Dashboard)
 
 2. **Shutdown On User Request**:
    - When the user asks to "stop", "kill", or "shut down" the server:
@@ -27,7 +27,7 @@
 ## 🏛️ Project Guidelines & Architecture
 
 - **Engine**: Astro 5 with `@tailwindcss/vite` (Tailwind CSS v4).
-- **Base Path**: `/capucins-clermont` (configured in `astro.config.mjs` for GitHub Pages).
+- **Base Path**: `/` (configured in `astro.config.mjs` for custom domain `capucins-clermont.fr`).
 - **Content Collections**: `src/content/events/` and `src/content/posts/`.
 - **Language Policy**:
   - Assistant responses & developer documentation: **English**.
