@@ -19,7 +19,7 @@ avec le manteau de saint François d&rsquo;Assise, chantre de la création aimé
 
 Messe avec bénédiction des lumières, à 19h.
 
-**Vendredi 7 février,** avec [sainte Colette](http://capucins-clermont.org/vie-spirituelle/figures-franciscaines/sainte-colette-de-corbie) :
+**Vendredi 7 février,** avec sainte Colette :
 
 L&rsquo;Adoration eucharistique, comme chaque vendredi, de 8h à 21h.
 

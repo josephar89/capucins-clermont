@@ -19,9 +19,9 @@ L&rsquo;année de la Miséricorde se présente comme un beau moment, dans la cha
 
 Du mardi au samedi, de 10h à 12h et de 15h à 18h, également après la messe de 19h en semaine.
 
-Prier devant **[le Christ de la miséricorde](http://capucins-clermont.org/wp-content/uploads/2013/06/Christ-Miséricorde.pdf)** (icône exposée chaque année de Pâques à la fin juin, dans la chapelle des Capucins, et réalisée par paolo Orlando).
+Prier devant **le Christ de la miséricorde** (icône exposée chaque année de Pâques à la fin juin, dans la chapelle des Capucins, et réalisée par Paolo Orlando).
 
-Découvrir les **[fresques de la miséricorde](http://capucins-clermont.org/chapelle/fresques-de-la-misericorde-divine)** peinte par Paolo Orlando (en 2007 et 2008).
+Découvrir les **fresques de la miséricorde** peintes par Paolo Orlando (en 2007 et 2008).
 
 **Acte de confiance et d&rsquo;abandon, de saint Jean-Paul II :**
 
